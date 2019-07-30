@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="getCtnrInfo"  datasource="dataSource" name="集装箱基本信息" desc="集装箱基本信息">
+    <Parameters>
+        <params>
+            <CTNR_OBJID/><!--箱型OBJID-->
+        </params>
+    </Parameters>
+    <Actions>
+        <select id="ctnrInfo" expect="1" params="params" isreturn="true" errorid="ctnr001">
+            <![CDATA[
+              SELECT * FROM EIR_CTNR_INFO A
+              WHERE A.OBJID = #{CTNR_OBJID}
+            ]]>
+        </select>
+    </Actions>
+</Function>

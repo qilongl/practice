@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="updateVoyageCtnrsOpenConditon"  datasource="dataSource" name="变更航次集装箱开放情况" desc="根据航次OBJID变更航次集装箱开放情况">
+    <Parameters>
+        <ctnrs islist="true">
+            <OBJID/>
+            <OPEN_NUMBER/>
+        </ctnrs>
+    </Parameters>
+    <Actions>
+        <update id="voyageCtnrsCondition" params="ctnrs" isreturn="true">
+            <![CDATA[
+            UPDATE eir_voyage_ctnr A SET A.OPEN_NUMBER = #{OPEN_NUMBER}  WHERE A.OBJID =#{OBJID}
+            ]]>
+        </update>
+    </Actions>
+</Function>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Epia id="test2" datasource="dataSource" name="在线新增接口测试2" desc="在线新增接口测试2">
+    <Parameters> 
+    </Parameters>
+    <Actions>     
+        <select id="tables" isreturn="true">  
+           SELECT C.TABLE_NAME, C.COMMENTS FROM USER_TAB_COMMENTS C
+        </select>
+
+        <insert id="insert" params="tables" isreturn="true" islist="true">
+           insert into test(T_ID,T_NAME) VALUES(1,#{TABLE_NAME})
+        </insert>
+    </Actions>
+</Epia>

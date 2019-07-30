@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Epia id="test16" datasource="dataSource" name="Createfile样例" desc="写入磁盘(创建文件)命令用法">
+    <Parameters>
+        <test>
+            <userName></userName>
+        </test>
+    </Parameters>
+    <Actions>
+        <select id="userInfo" params="test" isreturn="true">
+            select * from sys_user su where su.objname = #{userName}
+        </select>
+        <!--写入磁盘-->
+        <!--不指定目录时，使用系统默认附件目录-->
+        <createfile id="writeTxt1" filename="测试.txt" params="userInfo"  errorid="222"/>
+        <!--指定文件存储目录，basesavepath，savepath-->
+        <!--<createfile id="writeTxt2" filename="测试.txt" params="userInfo"  basesavepath="f:"-->
+                    <!--savepath="temp" errorid="111"/>-->
+        <download id="downloadTest" params="writeTxt1" errorid="222"></download>
+
+    </Actions>
+
+</Epia>

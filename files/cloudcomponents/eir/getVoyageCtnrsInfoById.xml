@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="getVoyageCtnrsInfoById"  datasource="dataSource" name="航次集装箱开放情况查询" desc="根据航次OBJID获取该航次所拥有的集装箱的开放情况">
+    <Parameters>
+        <params islist="false">
+            <VOYAGE_OBJID/><!--船次OBJID-->
+        </params>
+    </Parameters>
+    <Actions>
+        <select id="voyageCtnrsCondition" params="params" isreturn="true">
+            <![CDATA[
+            SELECT B.OBJID, C.TYPE, C.CODE, C.CAPACITY, B.OPEN_NUMBER, B.VIRTUAL_TOTAL
+             FROM eir_voyage_ctnr B
+             LEFT JOIN eir_ctnr_info C
+               ON B.CTNR_OBJID = C.OBJID
+              AND C.IS_VALID = 1
+              AND C.IS_DELETE = 0
+            WHERE B.VOYAGE_OBJID = #{VOYAGE_OBJID}
+            ]]>
+        </select>
+    </Actions>
+</Function>

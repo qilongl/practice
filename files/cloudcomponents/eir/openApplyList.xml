@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="openApplyList"  datasource="dataSource" name="开放申请列表" desc="获取船公司开放申请的航次列表数据">
+    <Parameters>
+        <params islist="false">
+            <PAGESIZE />
+            <PAGENUM />
+            <SORT default=""/><!--排序方向-->
+            <PROP default=""/><!--排序字段-->
+            <SHIP_NAME default=""/><!--船名-->
+            <VOYAGE default=""/><!--船次-->
+            <PORT default=""/><!--港口-->
+            <DESTINATION_PORT default=""/><!--目的港-->
+            <ETD default=""/><!--预定出发时间-->
+        </params>
+    </Parameters>
+    <Actions>
+        <select id="queryVoyageList" params="params" ispaging="true" isreturn="true" errorid="123">
+            <![CDATA[
+            SELECT id,
+                objid,
+                SHIP_NAME,
+                VOYAGE,
+                PORT,
+                WHARF,
+                to_char(create_time,'yyyy-MM-dd HH24:MI:SS') AS create_time,
+                create_psn,
+                to_char(update_time,'yyyy-MM-dd HH24:MI:SS') AS update_time,
+                update_psn,
+                IS_VALID,
+                is_delete,
+                to_char(etd,'yyyy-MM-dd HH24:MI:SS') AS ETD,
+                DESTINATION_PORT
+          FROM EIR_BOOKING_LIST A   WHERE A.IS_DELETE=0
+			<if test="#{SHIP_NAME}!=""">
+				AND A.SHIP_NAME LIKE '%'||#{SHIP_NAME}||'%'
+            </if>
+            <if test="#{VOYAGE}!=""">
+				AND A.VOYAGE LIKE '%'||#{VOYAGE}||'%'
+            </if>
+            <if test="#{PROP}==""">
+				ORDER BY ETD
+            </if>
+            <if test="#{PROP}=="SHIP_NAME"">
+				ORDER BY SHIP_NAME
+            </if>
+            <if test="#{PROP}=="VOYAGE"">
+				ORDER BY VOYAGE
+            </if>
+            <if test="#{PROP}=="PORT"">
+				ORDER BY PORT
+            </if>
+            <if test="#{PROP}=="WHARF"">
+				ORDER BY WHARF
+            </if>
+            <if test="#{PROP}=="IS_VALID"">
+				ORDER BY IS_VALID
+            </if>
+            <if test="#{PROP}=="ETD"">
+				ORDER BY ETD
+            </if>
+            <if test="#{PROP}=="DESTINATION_PORT"">
+				ORDER BY DESTINATION_PORT
+            </if>
+            <if test="#{SORT}==""">
+                ASC
+            </if>
+            <if test="#{SORT}=="D"">
+                DESC
+            </if>
+            <if test="#{SORT}=="A"">
+                ASC
+            </if>
+            ]]>
+        </select>
+        <select id="total" params="params" isreturn="true">
+            <![CDATA[
+            SELECT count(1) as TOTAL FROM EIR_BOOKING_LIST A   WHERE A.IS_DELETE=0
+			<if test="#{SHIP_NAME}!=""">
+				AND A.SHIP_NAME LIKE '%'||#{SHIP_NAME}||'%'
+            </if>
+            <if test="#{VOYAGE}!=""">
+				AND A.VOYAGE LIKE '%'||#{VOYAGE}||'%'
+            </if>
+            ]]>
+        </select>
+    </Actions>
+</Function>
+
+        <!--SELECT  a.id,-->
+        <!--a.objid,-->
+        <!--a.ship_name,-->
+        <!--a.voyage,-->
+        <!--a.port,-->
+        <!--a.destination_port,-->
+        <!--to_char(a.etd,'yyyy-MM-dd HH24:MI:SS') AS etd,-->
+        <!--b.open_number-->
+        <!--FROM EIR_BOOKING_LIST A-->
+        <!--left join EIR_voyage_ctnr B-->
+        <!--on a.objid = b.voyage_objid-->
+        <!--WHERE A.IS_DELETE=07-->

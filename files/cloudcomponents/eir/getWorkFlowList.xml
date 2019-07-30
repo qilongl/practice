@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="getWorkFlowList"  datasource="dataSource" name="获取流程列表" desc="获取所有流程信息">
+    <Parameters>
+        <params islist="false">
+            <PAGESIZE />
+            <PAGENUM />
+            <SORT default=""/><!--排序方向-->
+            <PROP default=""/><!--排序字段-->
+            <SHIP_NAME default=""/><!--船名-->
+            <VOYAGE default=""/><!--船次-->
+            <DESTINATION_PORT default=""/><!--目的港-->
+            <STATE default=""/><!--状态-->
+            <APPLY_START default=""/><!--申请开始时间-->
+            <APPLY_END default=""/><!--申请结束时间-->
+        </params>
+    </Parameters>
+    <Actions>
+        <select id="workFlowList" params="params" ispaging="true" isreturn="true" errorid="123">
+            <![CDATA[
+             SELECT DISTINCT EE.OBJID,
+             EE.OBJNAME AS EVENT_NAME,
+             EE.OBJDESC,
+             EE.STATE,
+             DECODE(EE.STATE,10,'待审批'，'11','已审批','无效状态，请联系开发人员'） AS STATE_NAME,
+             TO_CHAR(EE.CREATE_TIME,'YYYY-MM-DD HH24:MI:SS') AS CREATE_TIME,
+             EB.SHIP_NAME ,
+             EB.VOYAGE,
+             EB.DESTINATION_PORT,
+             SU.OBJNAME AS USERNAME,
+             A.CTNRS
+          FROM  EIR_EVENT EE
+         LEFT JOIN EIR_CUSTOMER_ORDERS EC
+         ON EE.OBJID = EC.OBJID
+         LEFT JOIN EIR_BOOKING_LIST EB
+         ON EC.VOYAGE_OBJID = EB.OBJID
+         LEFT JOIN SYS_USER SU
+         ON SU.OBJID  = EC.CUSTOMER_OBJID
+         AND SU.IS_DELETE=0
+         LEFT JOIN EIR_CTNR_INFO ECI
+         ON EC.CTNR_OBJID = ECI.OBJID
+         AND ECI.IS_DELETE=0
+         AND ECI.IS_VALID=1
+         LEFT JOIN (SELECT OBJID, LISTAGG(TYPE,',')WITHIN GROUP(ORDER BY TYPE) AS CTNRS FROM (
+       SELECT EC.OBJID AS OBJID,ECI.TYPE||'x'||EC.AMOUNT AS TYPE FROM   EIR_CUSTOMER_ORDERS EC
+       LEFT JOIN EIR_CTNR_INFO ECI
+         ON EC.CTNR_OBJID = ECI.OBJID
+         AND ECI.IS_DELETE=0
+         AND ECI.IS_VALID=1
+         ) GROUP BY OBJID) A
+         ON EE.OBJID =A.OBJID
+
+			<if test="#{SHIP_NAME}!=""">
+				AND A.SHIP_NAME LIKE '%'||#{SHIP_NAME}||'%'
+            </if>
+            <if test="#{VOYAGE}!=""">
+				AND A.VOYAGE LIKE '%'||#{VOYAGE}||'%'
+            </if>
+            <if test="#{PROP}==""">
+				ORDER BY CREATE_TIME
+            </if>
+            <if test="#{PROP}=="SHIP_NAME"">
+				ORDER BY SHIP_NAME
+            </if>
+            <if test="#{PROP}=="VOYAGE"">
+				ORDER BY VOYAGE
+            </if>
+            <if test="#{PROP}=="PORT"">
+				ORDER BY PORT
+            </if>
+            <if test="#{PROP}=="WHARF"">
+				ORDER BY WHARF
+            </if>
+            <if test="#{PROP}=="IS_VALID"">
+				ORDER BY IS_VALID
+            </if>
+            <if test="#{PROP}=="ETD"">
+				ORDER BY ETD
+            </if>
+            <if test="#{PROP}=="DESTINATION_PORT"">
+				ORDER BY DESTINATION_PORT
+            </if>
+            <if test="#{SORT}==""">
+                ASC
+            </if>
+            <if test="#{SORT}=="D"">
+                DESC
+            </if>
+            <if test="#{SORT}=="A"">
+                ASC
+            </if>
+            ]]>
+        </select>
+        <select id="total" params="params" isreturn="true">
+            <![CDATA[
+            SELECT count(1) as TOTAL FROM (
+            select DISTINCT ee.objid,
+             ee.objname,
+             ee.objdesc,
+             DECODE(ee.state,10,'待审批'，'11','已审批','无效状态，请联系开发人员'） as state,
+             to_char(ee.create_time,'yyyy-MM-dd HH24:MI:SS') AS create_time,
+             eb.ship_name ,
+             eb.voyage,
+             eb.destination_port,
+             su.objname as userName,
+             A.CTNRS
+          from  eir_event ee
+         left join eir_customer_orders ec
+         on ee.objid = ec.objid
+         left join eir_booking_list eb
+         on ec.voyage_objid = eb.objid
+         left join sys_user su
+         on su.objid  = ec.customer_objid
+         and su.is_delete=0
+         left join eir_ctnr_info eci
+         on ec.ctnr_objid = eci.objid
+         and eci.is_delete=0
+         and eci.is_valid=1
+         LEFT JOIN (SELECT OBJID, listagg(type,',')within group(order by type) AS CTNRS FROM (
+       SELECT ec.objid as OBJID,eci.type||'x'||ec.amount as type from   eir_customer_orders ec
+       left join eir_ctnr_info eci
+         on ec.ctnr_objid = eci.objid
+         and eci.is_delete=0
+         and eci.is_valid=1
+         ) GROUP BY OBJID) A
+         ON EE.OBJID =A.OBJID
+            )
+            ]]>
+        </select>
+    </Actions>
+</Function>
+
+        <!--SELECT  a.id,-->
+        <!--a.objid,-->
+        <!--a.ship_name,-->
+        <!--a.voyage,-->
+        <!--a.port,-->
+        <!--a.destination_port,-->
+        <!--to_char(a.etd,'yyyy-MM-dd HH24:MI:SS') AS etd,-->
+        <!--b.open_number-->
+        <!--FROM EIR_BOOKING_LIST A-->
+        <!--left join EIR_voyage_ctnr B-->
+        <!--on a.objid = b.voyage_objid-->
+        <!--WHERE A.IS_DELETE=07-->

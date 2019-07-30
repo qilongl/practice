@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="applyForBox" datasource="dataSource" name="车队申请用箱" desc="发出用箱申请">
+    <Parameters>
+        <params>
+            <CUSTOMER_OBJID/><!--申请人OBJID-->
+            <VOYAGE_OBJID/><!--船次OBJID-->
+            <CTNR_OBJID/><!--箱型OBJID-->
+            <AMOUNT/><!--个数-->
+        </params>
+    </Parameters>
+    <Actions>
+        <insert id="InsertApplyForBox" params="params" isreturn="true">
+            <![CDATA[
+              insert into eir_customer_orders
+              (ID,OBJID,CUSTOMER_OBJID,VOYAGE_OBJID,CTNR_OBJID,AMOUNT)
+              VALUES
+              (EIR_ID.NEXTVAL,SYS_GUID(),#{CUSTOMER_OBJID},#{VOYAGE_OBJID},#{CTNR_OBJID},#{AMOUNT})
+            ]]>
+        </insert>
+    </Actions>
+</Function>

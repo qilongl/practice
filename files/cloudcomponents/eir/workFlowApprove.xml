@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="workFlowApprove"  datasource="dataSource" name="流程审核操作" desc="流程审核action接口">
+    <Parameters>
+        <params islist="false">
+            <EVENT_OBJID/><!--流程实例OBJID-->
+            <APPROVER_OBJID/><!--操作人OBJID-->
+            <OPINION default=""/><!--审批意见-->
+            <STATE/><!--审批状态-->
+        </params>
+    </Parameters>
+    <Actions>
+        <update id="approveAction" params="params" isreturn="true">
+            <![CDATA[
+              UPDATE EIR_EVENT EE SET
+              EE.STATE =#{STATE} ,
+              EE.UPDATE_PSN = #{APPROVER_OBJID} ,
+              EE.UPDATE_TIME =SYSDATE,
+              EE.OPINION = #{OPINION}
+              WHERE EE.OBJID = #{EVENT_OBJID}
+              AND EE.IS_DELETE =0
+              AND EE.IS_VALID = 1
+            ]]>
+        </update>
+    </Actions>
+</Function>

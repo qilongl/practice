@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="asd" datasource="dataSource" name="测试" desc="测试">
+    <Parameters>
+        <params>
+        </params>
+    </Parameters>
+    <Actions>
+        <select id="abc" isreturn="true">
+            <![CDATA[
+            SELECT to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') time  ,rawtohex(sys_guid()) as QQ FROM dual
+            ]]>
+        </select>
+        <select id="qwe" isreturn="true">
+            <![CDATA[
+            SELECT to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') time  ,rawtohex(sys_guid()) as QQ FROM dual
+            ]]>
+        </select>
+    </Actions>
+</Function>

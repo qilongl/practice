@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="demo1" datasource="dataSource" name="测试" desc="测试">
+    <Parameters>
+        <user>
+            <userName/>
+            <age/>
+        </user>
+        <dog>
+            <breed/>
+            <color default="black"/>
+        </dog>
+        <table islist="true">
+            <name/>
+            <value default="black"/>
+        </table>
+    </Parameters>
+    <Actions>
+        <insert id="insert" isreturn="true" params="user">
+            <![CDATA[
+              insert into user(name,age) values(#{userName},#{age})
+            ]]>
+        </insert>
+        <delete id="delete" isreturn="true" params="user">
+            <![CDATA[
+              delete from user where userName =#{userName}
+            ]]>
+        </delete>
+        <update id="update" isreturn="true" params="user">
+            <![CDATA[
+              update user set age =#{age} where userName =#{userName}
+            ]]>
+        </update>
+        <select id="select" isreturn="true" ispaging="true" params="user">
+            <![CDATA[
+              select * from user
+            ]]>
+        </select>
+    </Actions>
+</Function>

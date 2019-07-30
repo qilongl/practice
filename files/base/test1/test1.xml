@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="test1" datasource="dataSource">
+    <Parameters>
+        <params>
+            <firstDir default=""/>
+        </params>
+    </Parameters>
+    <Actions>
+        <select id="functionFirstDirsList" isreturn="true">
+            select distinct SUBSTR(sf.fun_url, 0, INSTR(sf.fun_url, '-') - 1) FIRST_DIRECTORY
+            from sys_function sf
+        </select>
+        <if test="#{params.firstDir}!=''">
+            <select id="functionSecondDirsList" isreturn="true">
+                <![CDATA[
+                select distinct
+                SUBSTR(sf.fun_url,INSTR(sf.fun_url,'-') +1,INSTR(sf.fun_url,'-',1,2)-(INSTR(sf.fun_url,'-') +1)) AS
+                SECOND_DIRECTORY
+                from sys_function sf
+                where SUBSTR(sf.fun_url, 0, INSTR(sf.fun_url, '-') - 1)=#{params.firstDir}
+                ]]>
+            </select>
+        </if>
+    </Actions>
+</Function>

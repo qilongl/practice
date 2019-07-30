@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="test1" datasource="dataSource" name="测试" desc="测试">
+    <Parameters>
+        <params islist="true">
+            <!--<PAGENUM/>-->
+            <!--<PAGESIZE/>-->
+            <flag default="1"/>
+            <age/>
+        </params>
+    </Parameters>
+    <Actions>
+        <!--<select id="pagingList" isreturn="true" ispaging="true" params="params">-->
+            <!--<![CDATA[-->
+           <!--select t.table_name,to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') as time from user_tables t -->
+            <!--]]>-->
+        <!--</select>-->
+        <select id="abc" isreturn="true" params="params">
+            <![CDATA[
+           select #{flag} as flag,#{age} as age from dual
+            ]]>
+        </select>
+        <!--<select id="abc" isreturn="true">-->
+            <!--<![CDATA[-->
+           <!--select t.table_name,to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') as time from user_tables t where 1=#{params.flag}-->
+            <!--]]>-->
+        <!--</select>-->
+        <!--<select id="qwe" isreturn="true">-->
+            <!--<![CDATA[-->
+            <!--SELECT to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') time  ,rawtohex(sys_guid()) as QQ FROM dual-->
+            <!--]]>-->
+        <!--</select>-->
+    </Actions>
+</Function>

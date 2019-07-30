@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Function id="getApplyVoyageCtnrsInfoById"  datasource="dataSource" name="申请航次集装箱基础信息及集装箱情况查询"
+          desc="根据航次OBJID获取该航次所拥有的集装箱的开放情况，以及集装箱剩余情况信息">
+    <Parameters>
+        <params islist="false">
+            <VOYAGE_OBJID/><!--船次OBJID-->
+        </params>
+    </Parameters>
+    <Actions>
+        <!--<select id="voyageBaseInfo" params="params" isreturn="true">-->
+            <!--<![CDATA[-->
+        <!--SELECT ID,-->
+                <!--OBJID,-->
+                <!--SHIP_NAME,-->
+                <!--VOYAGE,-->
+                <!--PORT,-->
+                <!--WHARF,-->
+                <!--TO_CHAR(ETD,'YYYY-MM-DD HH24:MI:SS') AS ETD,-->
+                <!--DESTINATION_PORT-->
+          <!--FROM EIR_BOOKING_LIST A   WHERE A.IS_DELETE=0-->
+                <!--AND A.OBJID  = #{VOYAGE_OBJID}-->
+            <!--]]>-->
+        <!--</select>-->
+        <select id="ctnrInfo" params="params" isreturn="true">
+            <![CDATA[
+            SELECT BB.OBJID, BB.TYPE,BB.CODE,AA.OPEN_NUMBER,
+            (SELECT SUM(C.AMOUNT) FROM EIR_CUSTOMER_ORDERS C
+                LEFT JOIN EIR_EVENT EE
+                    ON C.OBJID = EE.OBJID
+                    AND EE.IS_DELETE=0
+                    AND EE.IS_VALID=1
+            WHERE  EE.STATE=11
+                AND C.VOYAGE_OBJID  = AA.VOYAGE_OBJID
+                AND C.CTNR_OBJID = AA.CTNR_OBJID
+            ) AS RESERVED
+            FROM EIR_VOYAGE_CTNR AA
+            LEFT JOIN EIR_CTNR_INFO BB
+                ON AA.CTNR_OBJID = BB.OBJID
+            WHERE AA.VOYAGE_OBJID = #{VOYAGE_OBJID}
+            ]]>
+        </select>
+    </Actions>
+</Function>

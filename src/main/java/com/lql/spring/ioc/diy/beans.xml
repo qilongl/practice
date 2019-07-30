@@ -1,0 +1,10 @@
+<beans>
+    <bean id="wheel" class="com.lql.spring.ioc.diy.Wheel">
+        <property name="nums" value="4"/>
+        <property name="texture" value="橡胶"/>
+    </bean>
+    <bean id="car" class="com.lql.spring.ioc.diy.Car">
+        <property name="brand" value="奔驰"/>
+        <property name="wheel" ref="wheel"/>
+    </bean>
+</beans>

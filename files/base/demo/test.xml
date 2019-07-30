@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Epia id="test" datasource="dataSource" name="在线新增接口测试" desc="在线新增接口测试">
+    <Parameters> 
+    </Parameters>
+    <Actions>     
+        <select id="Retrieve" isreturn="true">  
+            SELECT to_char(sysdate,'yyyy-mm-dd hh24:mi:ss') as currentTime from dual 
+        </select>
+    </Actions>
+</Epia>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lql.db.mybatis.beans.jspang.UserMapper" >
+  <resultMap id="BaseResultMap" type="com.lql.db.mybatis.beans.jspang.User" >
+    <result column="ID" property="id" jdbcType="DECIMAL" />
+    <result column="OBJID" property="objid" jdbcType="VARCHAR" />
+    <result column="OBJNAME" property="objname" jdbcType="VARCHAR" />
+    <result column="CRT_TIME" property="crtTime" jdbcType="TIMESTAMP" />
+    <result column="UPD_TIME" property="updTime" jdbcType="TIMESTAMP" />
+    <result column="ACCOUNT" property="account" jdbcType="VARCHAR" />
+    <result column="PASSWORD" property="password" jdbcType="VARCHAR" />
+    <result column="CRT_PSN" property="crtPsn" jdbcType="VARCHAR" />
+    <result column="UPD_PSN" property="updPsn" jdbcType="VARCHAR" />
+    <result column="IS_DELETE" property="isDelete" jdbcType="DECIMAL" />
+    <result column="PHONE" property="phone" jdbcType="DECIMAL" />
+  </resultMap>
+  <insert id="insert" parameterType="com.lql.db.mybatis.beans.jspang.User" >
+    insert into JSPANG.SYS_USER (ID, OBJID, OBJNAME, 
+      CRT_TIME, UPD_TIME, ACCOUNT, 
+      PASSWORD, CRT_PSN, UPD_PSN, 
+      IS_DELETE, PHONE)
+    values (#{id,jdbcType=DECIMAL}, #{objid,jdbcType=VARCHAR}, #{objname,jdbcType=VARCHAR}, 
+      #{crtTime,jdbcType=TIMESTAMP}, #{updTime,jdbcType=TIMESTAMP}, #{account,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{crtPsn,jdbcType=VARCHAR}, #{updPsn,jdbcType=VARCHAR}, 
+      #{isDelete,jdbcType=DECIMAL}, #{phone,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.lql.db.mybatis.beans.jspang.User" >
+    insert into JSPANG.SYS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="objid != null" >
+        OBJID,
+      </if>
+      <if test="objname != null" >
+        OBJNAME,
+      </if>
+      <if test="crtTime != null" >
+        CRT_TIME,
+      </if>
+      <if test="updTime != null" >
+        UPD_TIME,
+      </if>
+      <if test="account != null" >
+        ACCOUNT,
+      </if>
+      <if test="password != null" >
+        PASSWORD,
+      </if>
+      <if test="crtPsn != null" >
+        CRT_PSN,
+      </if>
+      <if test="updPsn != null" >
+        UPD_PSN,
+      </if>
+      <if test="isDelete != null" >
+        IS_DELETE,
+      </if>
+      <if test="phone != null" >
+        PHONE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=DECIMAL},
+      </if>
+      <if test="objid != null" >
+        #{objid,jdbcType=VARCHAR},
+      </if>
+      <if test="objname != null" >
+        #{objname,jdbcType=VARCHAR},
+      </if>
+      <if test="crtTime != null" >
+        #{crtTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null" >
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="crtPsn != null" >
+        #{crtPsn,jdbcType=VARCHAR},
+      </if>
+      <if test="updPsn != null" >
+        #{updPsn,jdbcType=VARCHAR},
+      </if>
+      <if test="isDelete != null" >
+        #{isDelete,jdbcType=DECIMAL},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+</mapper>
