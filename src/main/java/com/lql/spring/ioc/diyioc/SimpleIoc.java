@@ -1,4 +1,4 @@
-package com.lql.spring.ioc.diy;
+package com.lql.spring.ioc.diyioc;
 
 
 import org.w3c.dom.Document;

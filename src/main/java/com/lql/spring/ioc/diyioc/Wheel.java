@@ -1,4 +1,4 @@
-package com.lql.spring.ioc.diy;
+package com.lql.spring.ioc.diyioc;
 
 /**
  * Created by StrangeDragon on 2019/7/10 17:17

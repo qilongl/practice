@@ -1,4 +1,4 @@
-package com.lql.spring.ioc.diy;
+package com.lql.spring.ioc.diyioc;
 
 import org.junit.jupiter.api.Test;
 
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 public class Main {
     @Test
     public void getBean() throws Exception {
-        SimpleIoc simpleIoc = new SimpleIoc("C:\\Users\\lql\\Desktop\\DIY\\girl\\src\\main\\java\\com\\lql\\spring\\ioc\\beans.xml");
+        SimpleIoc simpleIoc = new SimpleIoc("G:\\码云\\练习项目\\practice\\src\\main\\java\\com\\lql\\spring\\ioc\\diyioc\\beans.xml");
         Car car = (Car) simpleIoc.getBean("car");
         System.out.println(car);
         Wheel wheel = (Wheel) simpleIoc.getBean("wheel");
