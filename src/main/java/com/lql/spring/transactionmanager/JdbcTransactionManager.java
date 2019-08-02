@@ -1,4 +1,4 @@
-package com.lql.spring.TransactionManager;
+package com.lql.spring.transactionmanager;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.lql.util.PropertiesUtil;
@@ -14,6 +14,9 @@ import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by StrangeDragon on 2019/7/29 10:42
@@ -32,69 +35,36 @@ public class JdbcTransactionManager {
 
     private static Logger logger = LoggerFactory.getLogger(JdbcTransactionManager.class);
 
-    private DataSource dataSource;
+    private static DataSource dataSource;//这里为了方便单元测试，保证数据源单例
+    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
     private DataSourceTransactionManager transactionManager;
     private DefaultTransactionDefinition definition;
     private TransactionStatus transactionStatus;
-    private JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
     private boolean isStartTransAction = false;
 
 
-    public JdbcTransactionManager() {
+    public JdbcTransactionManager() throws Exception {
+        if (null == dataSource) {
+            this.dataSource = dataSource();
+        }
     }
 
     public JdbcTransactionManager(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
-    public static void main(String[] args) throws Exception {
-//        JdbcTransactionManager transactionManager = new JdbcTransactionManager();
-//        transactionManager.setDataSource(dataSource());
-        JdbcTransactionManager transactionManager = new JdbcTransactionManager(dataSource());
-        try {
-            transactionManager.startTransaction();
-
-            String sql = "insert into test1 values(1,1,1,sysdate)";
-            int result = transactionManager.update(sql);
-            System.out.println(result);
-//            int a = 1 / 0;
-            transactionManager.commit();
-        } catch (Exception e) {
-            logger.error(e.getMessage());
-            transactionManager.rollback();
-        }
-    }
-
-    /**
-     * 奇了怪了，用下面这个单元测试，竟然还不允许我测试的类同时有两个构造方法（一个有参、一个无参），还必须用无参的才可以，后面再了解吧
-     *
-     * @param sql
-     * @return
-     */
-//    @Test
-//    public void test() throws Exception {
-//        JdbcTransactionManager transactionManager = new JdbcTransactionManager();
-//        transactionManager.setDataSource(dataSource());
-////        JdbcTransactionManager transactionManager = new JdbcTransactionManager(dataSource());
-//        try {
-//            transactionManager.startTransaction();
-//
-//            String sql = "insert into test1 values(1,1,1,sysdate)";
-//            int result = transactionManager.update(sql);
-//            System.out.println(result);
-////            int a = 1 / 0;
-//            transactionManager.commit();
-//        } catch (Exception e) {
-//            logger.error(e.getMessage());
-//            transactionManager.rollback();
-//        }
-//    }
     public int update(String sql) {
         if (null == jdbcTemplate.getDataSource())
             jdbcTemplate.setDataSource(dataSource);
         return jdbcTemplate.update(sql);
+    }
+
+    public List<Map<String, Object>> select(String sql) {
+        if (null == jdbcTemplate.getDataSource())
+            jdbcTemplate.setDataSource(dataSource);
+        return jdbcTemplate.queryForList(sql);
     }
 
 

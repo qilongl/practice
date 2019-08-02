@@ -1,9 +1,8 @@
-package com.lql.spring.TransactionManager;
+package com.lql.spring.transactionmanager;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import com.lql.util.PropertiesUtil;
 import org.apache.commons.configuration.Configuration;
-import org.apache.commons.configuration.PropertiesConfiguration;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
