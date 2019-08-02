@@ -6,7 +6,7 @@ package com.lql.designpattern.observerpattern.test1;
 public interface Observer {
     void update(String message, String themeName);
 
-    void follow(Theme theme);
+    void follow(Theme abstarctTheme);
 
-    void unFollow(Theme theme);
+    void unFollow(Theme abstarctTheme);
 }

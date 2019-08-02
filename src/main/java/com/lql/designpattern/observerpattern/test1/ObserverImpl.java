@@ -19,11 +19,11 @@ public class ObserverImpl implements Observer {
         System.out.println(themeName + "推送了消息：" + message);
     }
 
-    public void follow(Theme theme) {
-        theme.register(this);
+    public void follow(Theme abstarctTheme) {
+        abstarctTheme.register(this);
     }
 
-    public void unFollow(Theme theme) {
-        theme.remove(this);
+    public void unFollow(Theme abstarctTheme) {
+        abstarctTheme.remove(this);
     }
 }

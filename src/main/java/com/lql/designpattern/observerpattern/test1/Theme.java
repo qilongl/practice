@@ -9,7 +9,7 @@ import java.util.List;
  * Created by StrangeDragon on 2019/8/2 9:29
  **/
 @Data
-public abstract class Theme {
+public  class Theme implements ITheme {
     public List<Observer> list = new ArrayList<>();
 
     private String name;
