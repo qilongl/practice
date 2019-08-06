@@ -43,7 +43,7 @@ pagehelper:
 #logging:
 #  level: info
 #  file: spring.log
-#logging.file=demo.log
+#logging.file=shallowCopy1.log
 
 
 

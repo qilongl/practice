@@ -150,8 +150,8 @@ Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionExcep
 2019/08/05-13:54 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer- Tomcat started on port(s): 8888 (http)
 2019/08/05-13:54 [restartedMain] INFO  com.lql.SpringbootApplication- Started SpringbootApplication in 22.025 seconds (JVM running for 22.729)
 2019/08/05-13:54 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1,dataSource} inited
-2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,增量入库 no !
-2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,增量入库 no !
+2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,增量入库 no !
+2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,增量入库 no !
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,增量入库 no !
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,增量入库 no !
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,增量入库 no !
@@ -191,8 +191,8 @@ Caused by: org.springframework.context.annotation.ConflictingBeanDefinitionExcep
 
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 开发环境，从磁盘加载.....
 
-2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,加载成功
-2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,加载成功
+2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,加载成功
+2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,加载成功
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,加载成功
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,加载成功
 2019/08/05-13:54 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,加载成功
@@ -510,8 +510,8 @@ java.lang.NullPointerException: null
 2019/08/05-14:07 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer- Tomcat started on port(s): 8888 (http)
 2019/08/05-14:07 [restartedMain] INFO  com.lql.SpringbootApplication- Started SpringbootApplication in 20.591 seconds (JVM running for 21.156)
 2019/08/05-14:07 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1,dataSource} inited
-2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,增量入库 no !
-2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,增量入库 no !
+2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,增量入库 no !
+2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,增量入库 no !
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,增量入库 no !
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,增量入库 no !
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,增量入库 no !
@@ -551,8 +551,8 @@ java.lang.NullPointerException: null
 
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 开发环境，从磁盘加载.....
 
-2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,加载成功
-2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,加载成功
+2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,加载成功
+2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,加载成功
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,加载成功
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,加载成功
 2019/08/05-14:07 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,加载成功
@@ -807,8 +807,8 @@ Caused by: java.lang.NullPointerException: null
 2019/08/05-14:19 [restartedMain] INFO  org.springframework.boot.context.embedded.tomcat.TomcatEmbeddedServletContainer- Tomcat started on port(s): 8888 (http)
 2019/08/05-14:19 [restartedMain] INFO  com.lql.SpringbootApplication- Started SpringbootApplication in 20.428 seconds (JVM running for 21.004)
 2019/08/05-14:19 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1,dataSource} inited
-2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,增量入库 no !
-2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,增量入库 no !
+2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,增量入库 no !
+2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,增量入库 no !
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,增量入库 no !
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,增量入库 no !
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,增量入库 no !
@@ -848,8 +848,8 @@ Caused by: java.lang.NullPointerException: null
 
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 开发环境，从磁盘加载.....
 
-2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,加载成功
-2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,加载成功
+2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,加载成功
+2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,加载成功
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,加载成功
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,加载成功
 2019/08/05-14:19 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,加载成功
@@ -1956,8 +1956,8 @@ Unconditional classes:
 2019/08/05-14:20 [restartedMain] DEBUG org.springframework.boot.devtools.restart.Restarter- Starting application com.lql.SpringbootApplication with URLs [file:/G:/gitee/practicepProject/practice/target/classes/]
 2019/08/05-14:20 [restartedMain] INFO  com.lql.SpringbootApplication- Started SpringbootApplication in 20.355 seconds (JVM running for 20.98)
 2019/08/05-14:20 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1,dataSource} inited
-2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,增量入库 no !
-2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,增量入库 no !
+2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,增量入库 no !
+2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,增量入库 no !
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,增量入库 no !
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,增量入库 no !
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,增量入库 no !
@@ -1997,8 +1997,8 @@ Unconditional classes:
 
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 开发环境，从磁盘加载.....
 
-2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,加载成功
-2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,加载成功
+2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,加载成功
+2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,加载成功
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,加载成功
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,加载成功
 2019/08/05-14:20 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,加载成功
@@ -4158,8 +4158,8 @@ Unconditional classes:
 2019/08/05-14:22 [restartedMain] DEBUG org.springframework.boot.devtools.restart.Restarter- Starting application com.lql.SpringbootApplication with URLs [file:/G:/gitee/practicepProject/practice/target/classes/]
 2019/08/05-14:22 [restartedMain] INFO  com.lql.SpringbootApplication- Started SpringbootApplication in 20.479 seconds (JVM running for 21.056)
 2019/08/05-14:22 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1,dataSource} inited
-2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,增量入库 no !
-2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,增量入库 no !
+2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,增量入库 no !
+2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,增量入库 no !
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,增量入库 no !
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,增量入库 no !
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,增量入库 no !
@@ -4199,8 +4199,8 @@ Unconditional classes:
 
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 开发环境，从磁盘加载.....
 
-2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,加载成功
-2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,加载成功
+2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,加载成功
+2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,加载成功
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,加载成功
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,加载成功
 2019/08/05-14:22 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,加载成功
@@ -5317,8 +5317,8 @@ Unconditional classes:
 2019/08/05-14:24 [restartedMain] DEBUG com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 	准备初始化所有业务配置文件
 2019/08/05-14:24 [restartedMain] INFO  com.alibaba.druid.pool.DruidDataSource- {dataSource-1,dataSource} inited
 2019/08/05-14:24 [restartedMain] DEBUG com.lql.xml.db.DPService- 事务开启
-2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,增量入库 no !
-2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,增量入库 no !
+2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,增量入库 no !
+2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,增量入库 no !
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,增量入库 no !
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,增量入库 no !
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,增量入库 no !
@@ -5358,8 +5358,8 @@ Unconditional classes:
 
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 开发环境，从磁盘加载.....
 
-2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-demo-test,加载成功
-2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-demo-test2,加载成功
+2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试,base-shallowCopy1-test,加载成功
+2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 在线新增接口测试2,base-shallowCopy1-test2,加载成功
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-demo1,加载成功
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 查询样例,base-test-selectDemo,加载成功
 2019/08/05-14:24 [restartedMain] INFO  com.lql.xml.XMLAnalyzer.service.impl.BusiConfigCache- 测试,base-test-test1,加载成功
