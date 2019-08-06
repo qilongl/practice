@@ -41,7 +41,6 @@ public class JdbcTransactionManager {
     private DataSourceTransactionManager transactionManager;
     private DefaultTransactionDefinition definition;
     private TransactionStatus transactionStatus;
-
     private boolean isStartTransAction = false;
 
 
@@ -54,19 +53,6 @@ public class JdbcTransactionManager {
     public JdbcTransactionManager(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
-    public int update(String sql) {
-        if (null == jdbcTemplate.getDataSource())
-            jdbcTemplate.setDataSource(dataSource);
-        return jdbcTemplate.update(sql);
-    }
-
-    public List<Map<String, Object>> select(String sql) {
-        if (null == jdbcTemplate.getDataSource())
-            jdbcTemplate.setDataSource(dataSource);
-        return jdbcTemplate.queryForList(sql);
-    }
-
 
     /**
      * 开启一个事务
@@ -125,6 +111,7 @@ public class JdbcTransactionManager {
         jdbcTemplate = null;
     }
 
+
     public static DruidDataSource dataSource() throws Exception {
         logger.info("============================" + DEFAULT_DATASOURCE + "初始化===================================");
         DruidDataSource dataSource = new DruidDataSource();
@@ -171,4 +158,20 @@ public class JdbcTransactionManager {
         dataSource.setName(DEFAULT_DATASOURCE);
         return dataSource;
     }
+
+
+    public int update(String sql) {
+        if (null == jdbcTemplate.getDataSource())
+            jdbcTemplate.setDataSource(dataSource);
+        return jdbcTemplate.update(sql);
+    }
+
+    public List<Map<String, Object>> select(String sql) {
+        if (null == jdbcTemplate.getDataSource())
+            jdbcTemplate.setDataSource(dataSource);
+        return jdbcTemplate.queryForList(sql);
+    }
+    /**
+     * ...可以将更多的jdbcTemplate模板方法封装过来，方便我们使用
+     */
 }

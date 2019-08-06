@@ -1,6 +1,5 @@
 package com.lql.spring.beanlifecycle;
 
-import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 /**
@@ -11,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 public class BeanLifeCycle {
     public static void main(String[] args) {
         System.out.println("现在开始初始化容器");
-        Class[] classes = new Class[]{Config.class, MyBeanFactoryPostProcessor.class, MyBeanPostProcessor.class, MyInstantiationAwareBeanPostProcessor.class};
+        Class[] classes = new Class[]{BeanConfig.class, MyBeanFactoryPostProcessor.class, MyBeanPostProcessor.class, MyInstantiationAwareBeanPostProcessor.class};
         AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(classes);
         System.out.println("容器初始化成功");
 

@@ -71,14 +71,14 @@ public class ComponentController {
         String url = RestUrlUtil.getRestUrl(port,"extendService");
 
         //调用安全token校验
-        ResponseResult rr_token = centreService.checkTokenInfoByAccount("", jsonParams);
-        if (rr_token.getStatusCode().equals(ResponseResult.RESULT_STATUS_CODE_SUCCESS)) {
-            jsonParams = rr_token.getResult().toString();
+//        ResponseResult rr_token = centreService.checkTokenInfoByAccount("", jsonParams);
+//        if (rr_token.getStatusCode().equals(ResponseResult.RESULT_STATUS_CODE_SUCCESS)) {
+//            jsonParams = rr_token.getResult().toString();
             exec(jsonParams, rr, request, response, url);
-        } else {
-            writerResult(JSON.toJSONString(rr_token, JsonValueFilter.changeNullToString()), response);
-            return;
-        }
+//        } else {
+//            writerResult(JSON.toJSONString(rr_token, JsonValueFilter.changeNullToString()), response);
+//            return;
+//        }
 
     }
 

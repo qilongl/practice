@@ -19,6 +19,7 @@ import java.util.Map;
 
 /**
  * Created by StrangeDragon on 2019/7/29 10:43
+ * 测试：从配置类中加载bean到容器，从容器获取加载的bean
  **/
 @org.springframework.context.annotation.Configuration
 public class DataSourceConfig {
@@ -35,17 +36,17 @@ public class DataSourceConfig {
 
     /**
      * 从容器中加载
+     *
      * @throws Exception
      */
     @Test
     public void test() throws Exception {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(DataSourceConfig.class);
-        DataSource dataSource= (DataSource) ctx.getBean("dataSource");
+        DataSource dataSource = (DataSource) ctx.getBean("dataSource");
         JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
         List<Map<String, Object>> result = jdbcTemplate.queryForList("select 1 as num from dual");
         System.out.println(result);
     }
-
 
 
     /**
