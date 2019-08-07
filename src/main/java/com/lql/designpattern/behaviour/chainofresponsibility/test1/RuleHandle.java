@@ -1,4 +1,4 @@
-package com.lql.designpattern.chainofresponsibility.test1;
+package com.lql.designpattern.behaviour.chainofresponsibility.test1;
 
 import lombok.Data;
 

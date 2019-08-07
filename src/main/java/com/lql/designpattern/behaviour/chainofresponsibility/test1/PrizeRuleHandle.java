@@ -1,6 +1,4 @@
-package com.lql.designpattern.chainofresponsibility.test1;
-
-import com.sun.org.apache.bcel.internal.generic.IF_ACMPEQ;
+package com.lql.designpattern.behaviour.chainofresponsibility.test1;
 
 import java.util.Random;
 

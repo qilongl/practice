@@ -1,4 +1,4 @@
-package com.lql.designpattern.chainofresponsibility.test1;
+package com.lql.designpattern.behaviour.chainofresponsibility.test1;
 
 /**
  * Created by StrangeDragon on 2019/8/7 10:05

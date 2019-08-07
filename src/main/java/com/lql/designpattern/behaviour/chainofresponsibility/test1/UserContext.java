@@ -1,6 +1,4 @@
-package com.lql.designpattern.chainofresponsibility.test1;
-
-import lombok.Data;
+package com.lql.designpattern.behaviour.chainofresponsibility.test1;
 
 import java.util.HashMap;
 import java.util.HashSet;
