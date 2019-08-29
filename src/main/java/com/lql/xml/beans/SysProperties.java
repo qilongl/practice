@@ -1,6 +1,7 @@
 package com.lql.xml.beans;
 
 import com.lql.util.PropertiesUtil;
+import com.lql.util.StringHelper;
 import org.apache.commons.configuration.Configuration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -114,23 +115,23 @@ public class SysProperties {
         /**由于这种方式打成JAR时会出现异常信息，暂时不用以下的代码 end**/
         /**new get properties begin**/
         Configuration configuration = PropertiesUtil.getDirConfig(configFile);
-        fileDir = configuration.getString("fileDir");
-        String sysbasedir = configuration.getString("sysbasedir");
-        String userbasedir = configuration.getString("userbasedir");
+        fileDir = StringHelper.stringEncoding2UTF8(configuration.getString("fileDir"));
+        String sysbasedir = StringHelper.stringEncoding2UTF8(configuration.getString("sysbasedir"));
+        String userbasedir = StringHelper.stringEncoding2UTF8(configuration.getString("userbasedir"));
         /**new get properties end**/
         sysBaseDir = sysbasedir;
         userBaseDir = userbasedir;
-        tokenValidity = configuration.getString("tokenValidity");
-        attachmentPath = configuration.getString("attachmentPath");
-        isPrintErrorDetail = configuration.getString("isPrintErrorDetail");
-        isProduction = configuration.getString("isProduction");
+        tokenValidity = StringHelper.stringEncoding2UTF8(configuration.getString("tokenValidity"));
+        attachmentPath = StringHelper.stringEncoding2UTF8(configuration.getString("attachmentPath"));
+        isPrintErrorDetail = StringHelper.stringEncoding2UTF8(configuration.getString("isPrintErrorDetail"));
+        isProduction = StringHelper.stringEncoding2UTF8(configuration.getString("isProduction"));
         SysProperties.sysbasedir = sysbasedir.substring(sysbasedir.lastIndexOf(File.separator) + 1, sysbasedir.length());
         SysProperties.userbasedir = userbasedir.substring(userbasedir.lastIndexOf(File.separator) + 1, userbasedir.length());
         Iterator it = configuration.getKeys();
         dic.clear();
         while (it.hasNext()) {
             String key = it.next().toString();
-            String value = configuration.getString(key);
+            String value = StringHelper.stringEncoding2UTF8(configuration.getString(key));
             dic.put(key, value);
         }
         baseDic = sysbasedir.substring(0, sysbasedir.lastIndexOf(File.separator));

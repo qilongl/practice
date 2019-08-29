@@ -1,0 +1,8 @@
+todo
+1、HashMap底层实现原理、其他集合类：ArrayList和LinkedList源码分析
+2、红黑树、平衡二叉树
+3、线程池
+4、数据库索引如何实现
+5、数据库锁
+6、kafka、（以及 ZooKeeper）
+7、mybatis 复习以及深入

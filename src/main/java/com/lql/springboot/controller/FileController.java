@@ -71,7 +71,7 @@ public class FileController {
 //        return "上传失败";
 //    }
     //多文件上传
-    public String handleFileUpload(HttpServletRequest request) throws ConfigurationException {
+    public String handleFileUpload(HttpServletRequest request) throws Exception {
         String type = StringHelper.toString(request.getParameter("type"));
         type = (type == "" ? "10" : type);
         String filePath = SysConfigrationBean.getAttachmentPath() + File.separator;

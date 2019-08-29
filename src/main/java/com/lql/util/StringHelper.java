@@ -1,4 +1,5 @@
 package com.lql.util;
+
 import com.lql.util.EncryptHelper;
 import com.lql.util.Money;
 import com.lql.util.NumberHelper;
@@ -88,13 +89,13 @@ public class StringHelper {
         return strIn == null ? "" : strIn;
     }
 
-    public static Map string2Map(String strIn,String strDim){
-        Map map=new HashMap();
-        List list = string2ArrayList(strIn,strDim);
-        Iterator it=list.iterator();
-        while(it.hasNext()){
+    public static Map string2Map(String strIn, String strDim) {
+        Map map = new HashMap();
+        List list = string2ArrayList(strIn, strDim);
+        Iterator it = list.iterator();
+        while (it.hasNext()) {
             String str = (String) it.next();
-            map.put(str.substring(0,str.indexOf("=")).trim(),str.substring(str.indexOf("=")+1).trim());
+            map.put(str.substring(0, str.indexOf("=")).trim(), str.substring(str.indexOf("=") + 1).trim());
         }
         return map;
     }
@@ -106,7 +107,7 @@ public class StringHelper {
         return strIn == null ? "" : "" + strIn.toString().trim();
     }
 
-    public static String null2String(Object strIn,String defstr) {
+    public static String null2String(Object strIn, String defstr) {
         return strIn == null ? defstr : "" + strIn;
     }
 
@@ -159,9 +160,9 @@ public class StringHelper {
     /**
      *
      */
-    public static HashSet<String> string2Set(String strIn, String strDim ) {
+    public static HashSet<String> string2Set(String strIn, String strDim) {
         ArrayList<String> list = string2ArrayList(strIn, ",");
-        HashSet<String> set=new HashSet<String>();
+        HashSet<String> set = new HashSet<String>();
         set.addAll(list);//给set填充
         list.clear();//清空list，不然下次把set元素加入此list的时候是在原来的基础上追加元素的
         list.addAll(set);//把set的
@@ -253,16 +254,17 @@ public class StringHelper {
 
     /**
      * 替换字符串
+     *
      * @param strSource
      * @param strFrom
      */
     public static String replaceString(String strSource, String strFrom,
                                        String strTo) {
-        if (strSource == null ) {
+        if (strSource == null) {
             return strSource;
         }
         int i = 0;
-        if ((i = strSource.indexOf(strFrom, i)) >= 0 && strTo!=null) {
+        if ((i = strSource.indexOf(strFrom, i)) >= 0 && strTo != null) {
             char[] cSrc = strSource.toCharArray();
             char[] cTo = strTo.toCharArray();
             int len = strFrom.length();
@@ -280,30 +282,30 @@ public class StringHelper {
         }
         return strSource;
     }
+
     public static String passwordBuilder(int length)        //随机生成动态密码
     {
         String str = "";
         String[] arr =
                 {
-                        "2","3","4","5","6","7","8","9",
-                        "a","d","e","f","g","h","i","j",
-                        "m","n","r","t","u","y",
-                        "A","B","D","E","F","G","H","J",
-                        "L","M","N","Q","R","T","Y"
+                        "2", "3", "4", "5", "6", "7", "8", "9",
+                        "a", "d", "e", "f", "g", "h", "i", "j",
+                        "m", "n", "r", "t", "u", "y",
+                        "A", "B", "D", "E", "F", "G", "H", "J",
+                        "L", "M", "N", "Q", "R", "T", "Y"
                 };
 
         java.util.Random rd = new java.util.Random();
-        while (str.length() < length)
-        {
+        while (str.length() < length) {
 
             String temp = arr[rd.nextInt(37)];
-            if (str.indexOf(temp) == -1)
-            {
+            if (str.indexOf(temp) == -1) {
                 str += temp;
             }
         }
         return str;
     }
+
     /**
      *
      *
@@ -353,11 +355,12 @@ public class StringHelper {
 
     // Empty checks
     // -----------------------------------------------------------------------
+
     /**
      * <p>
      * Checks if a String is empty ("") or null.
      * </p>
-     *
+     * <p>
      * <pre>
      *  StringUtils.isEmpty(null)      = true
      *  StringUtils.isEmpty(&quot;&quot;)        = true
@@ -365,14 +368,13 @@ public class StringHelper {
      *  StringUtils.isEmpty(&quot;bob&quot;)     = false
      *  StringUtils.isEmpty(&quot;  bob  &quot;) = false
      * </pre>
-     *
+     * <p>
      * <p>
      * NOTE: This method changed in Lang version 2.0. It no longer trims the
      * String. That functionality is available in isBlank().
      * </p>
      *
-     * @param str
-     *            the String to check, may be null
+     * @param str the String to check, may be null
      * @return <code>true</code> if the String is empty or null
      */
     public static boolean isEmpty(String str) {
@@ -383,20 +385,20 @@ public class StringHelper {
     public static boolean isID(String str) {
         return
                 !isEmpty(str) &&
-                        str.trim().indexOf(" ")<=-1 && //  不含空格
-                        str.trim().indexOf("'")<=-1 && //   不含单引号, 防注入
+                        str.trim().indexOf(" ") <= -1 && //  不含空格
+                        str.trim().indexOf("'") <= -1 && //   不含单引号, 防注入
                         (
                                 //业务需求
-                                (str.trim().indexOf("N")== 0 && str.trim().length()==6 &&
-                                        NumberHelper.string2Int(StringHelper.null2String(str.trim().substring(1)))!=-1 )
-                                        ||str.trim().indexOf("_RptType") > 0
-                                        ||str.trim().indexOf("_STOCKFORECAST") > 0
-                                        ||str.trim().indexOf("_T_USERCOMPANY") > 0
-                                        ||str.trim().indexOf("_RptType") > 0
-                                        || NumberHelper.string2Int(StringHelper.null2String(str.trim()))!=-1
-                                        ||str.trim().indexOf(".") > 0
+                                (str.trim().indexOf("N") == 0 && str.trim().length() == 6 &&
+                                        NumberHelper.string2Int(StringHelper.null2String(str.trim().substring(1))) != -1)
+                                        || str.trim().indexOf("_RptType") > 0
+                                        || str.trim().indexOf("_STOCKFORECAST") > 0
+                                        || str.trim().indexOf("_T_USERCOMPANY") > 0
+                                        || str.trim().indexOf("_RptType") > 0
+                                        || NumberHelper.string2Int(StringHelper.null2String(str.trim())) != -1
+                                        || str.trim().indexOf(".") > 0
                                         //系统需求
-                                        ||str.trim().length() >= 32
+                                        || str.trim().length() >= 32
                         );
         //return true;
     }
@@ -407,13 +409,13 @@ public class StringHelper {
      * Removes control characters (char &lt;= 32) from both ends of this String
      * returning <code>null</code> if the String is empty ("") after the trim
      * or if it is <code>null</code>.
-     *
+     * <p>
      * <p>
      * The String is trimmed using {@link String#trim()}. Trim removes start
      * and end characters &lt;= 32. To strip whitespace use
      * {@link #(String)}.
      * </p>
-     *
+     * <p>
      * <pre>
      *  StringUtils.trimToNull(null)          = null
      *  StringUtils.trimToNull(&quot;&quot;)            = null
@@ -422,10 +424,9 @@ public class StringHelper {
      *  StringUtils.trimToNull(&quot;    abc    &quot;) = &quot;abc&quot;
      * </pre>
      *
-     * @param str
-     *            the String to be trimmed, may be null
+     * @param str the String to be trimmed, may be null
      * @return the trimmed String, <code>null</code> if only chars &lt;= 32,
-     *         empty or null String input
+     * empty or null String input
      * @since 2.0
      */
     public static String trimToNull(String str) {
@@ -438,18 +439,18 @@ public class StringHelper {
      * Removes control characters (char &lt;= 32) from both ends of this String,
      * handling <code>null</code> by returning <code>null</code>.
      * </p>
-     *
+     * <p>
      * <p>
      * The String is trimmed using {@link String#trim()}. Trim removes start
      * and end characters &lt;= 32. To strip whitespace use
      * {@link #(String)}.
      * </p>
-     *
+     * <p>
      * <p>
      * To trim your choice of characters, use the {@link #(String, String)}
      * methods.
      * </p>
-     *
+     * <p>
      * <pre>
      *  StringUtils.trim(null)          = null
      *  StringUtils.trim(&quot;&quot;)            = &quot;&quot;
@@ -458,8 +459,7 @@ public class StringHelper {
      *  StringUtils.trim(&quot;    abc    &quot;) = &quot;abc&quot;
      * </pre>
      *
-     * @param str
-     *            the String to be trimmed, may be null
+     * @param str the String to be trimmed, may be null
      * @return the trimmed string, <code>null</code> if null String input
      */
     public static String trim(String str) {
@@ -516,11 +516,12 @@ public class StringHelper {
         }
         return buf.toString();
     }
-    public static String Array2String(Object[] strIn, String strDim){
+
+    public static String Array2String(Object[] strIn, String strDim) {
         StringBuffer str = new StringBuffer();
-        int len=strIn.length;
-        for(int i=0;i<len;i++){
-            str.append((i==0)?strIn[i]:strDim+strIn[i]);
+        int len = strIn.length;
+        for (int i = 0; i < len; i++) {
+            str.append((i == 0) ? strIn[i] : strDim + strIn[i]);
         }
         return str.toString();
     }
@@ -534,9 +535,11 @@ public class StringHelper {
             strOut.delete(strOut.lastIndexOf(strDim), strOut.length());
         return strOut.toString();
     }
+
     public static String ArrayList2String(ArrayList strIn, String strDim) {
-        return List2String(strIn,strDim);
+        return List2String(strIn, strDim);
     }
+
     public static String List2String(List strIn, String strDim) {
         StringBuffer strOut = new StringBuffer();
         for (Object o : strIn) {
@@ -620,14 +623,14 @@ public class StringHelper {
     }
 
     public static String formatMutiIDs(String ids) {
-        String ret="";
+        String ret = "";
         ArrayList arrayids = string2ArrayList(ids, ",");
         for (int i = 0; i < arrayids.size(); i++) {
             String _id = null2String(String.valueOf(arrayids.get(i))).trim();
-            if(StringHelper.isEmpty(_id)) continue;
+            if (StringHelper.isEmpty(_id)) continue;
             //剔除ids中的重复id
-            if(ret.contains(_id)) continue;
-            if(isID(_id)){
+            if (ret.contains(_id)) continue;
+            if (isID(_id)) {
                 ret += ",'" + _id + "'";
             }
         }
@@ -638,18 +641,19 @@ public class StringHelper {
     }
 
     /**
-     *  得到PreparedStatement执行的SQL语句中的in字符串
-     *  @author pitt
-     *  @date   20140211
-     * */
+     * 得到PreparedStatement执行的SQL语句中的in字符串
+     *
+     * @author pitt
+     * @date 20140211
+     */
 
     public static String getPreparedStatementStr(String ids) {
-        String ret="";
+        String ret = "";
         ArrayList arrayids = string2ArrayList(ids, ",");
         for (int i = 0; i < arrayids.size(); i++) {
             String _id = null2String(String.valueOf(arrayids.get(i))).trim();
-            if(StringHelper.isEmpty(_id)) continue;
-            if(isID(_id)){
+            if (StringHelper.isEmpty(_id)) continue;
+            if (isID(_id)) {
                 ret += ",?";
             }
         }
@@ -661,13 +665,13 @@ public class StringHelper {
 
     /**
      * 从aids中剔除bids中的所有id
-     * */
-    public static String removeIDs(String aids,String bids) {
+     */
+    public static String removeIDs(String aids, String bids) {
         ArrayList arrayids = string2ArrayList(bids, ",");
         for (int i = 0; i < arrayids.size(); i++) {
             String _id = null2String(String.valueOf(arrayids.get(i))).trim();
-            if(isID(_id)){
-                aids = aids.replaceAll(_id,"");
+            if (isID(_id)) {
+                aids = aids.replaceAll(_id, "");
             }
         }
         return formatMutiIDs(aids);
@@ -683,25 +687,22 @@ public class StringHelper {
 
     }
 
-    public static String getDecodeStr(String strIn)
-    {
-        if(strIn == null)
+    public static String getDecodeStr(String strIn) {
+        if (strIn == null)
             return "";
         String strTemp = "";
-        for(int i = 0; i < strIn.length(); i++)
-        {
+        for (int i = 0; i < strIn.length(); i++) {
             char charTemp = strIn.charAt(i);
-            switch(charTemp)
-            {
+            switch (charTemp) {
                 case 124: // '~'
                     String strTemp2 = strIn.substring(i + 1, i + 3);
-                    strTemp = strTemp + (char)Integer.parseInt(strTemp2, 16);
+                    strTemp = strTemp + (char) Integer.parseInt(strTemp2, 16);
                     i += 2;
                     break;
 
                 case 94: // '^'
                     String strTemp3 = strIn.substring(i + 1, i + 5);
-                    strTemp = strTemp + (char)Integer.parseInt(strTemp3, 16);
+                    strTemp = strTemp + (char) Integer.parseInt(strTemp3, 16);
                     i += 4;
                     break;
 
@@ -715,48 +716,49 @@ public class StringHelper {
     }
 
     /**
-     *
      * @param str
      * @return
      */
-    public static String getBase64Encode(String str, String prefix){
-        if(isEmpty(prefix)) prefix ="e_n_c_o_d_e";
-        try{
-            if(!StringHelper.isEmpty(str)){
+    public static String getBase64Encode(String str, String prefix) {
+        if (isEmpty(prefix)) prefix = "e_n_c_o_d_e";
+        try {
+            if (!StringHelper.isEmpty(str)) {
                 str = EncryptHelper.encryptBASE64(str.getBytes());//加密
-                str = prefix+str.replaceAll("\\r\\n" ,"").replaceAll("\\r","").replaceAll("\\n","");
+                str = prefix + str.replaceAll("\\r\\n", "").replaceAll("\\r", "").replaceAll("\\n", "");
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return str;
     }
 
     /**
-     *  //支持加密传输后的解密.  by ray 2015-02-09
+     * //支持加密传输后的解密.  by ray 2015-02-09
+     *
      * @param str
      * @return
      */
-    public static String getBase64Decode(String str, String prefix){
-        return getBase64Decode(str,prefix,false);
+    public static String getBase64Decode(String str, String prefix) {
+        return getBase64Decode(str, prefix, false);
     }
 
 
     /**
      * 可以选择是否需要对传进来的字符进行强制解密，即使字符串不是一 e_n_c_o_d_e开头
+     *
      * @param str
      * @param prefix
-     * @param force   强制需要解密
+     * @param force  强制需要解密
      * @return
      */
-    public static String getBase64Decode(String str , String prefix , boolean force){
-        if(isEmpty(prefix)) prefix ="e_n_c_o_d_e";
-        if(!StringHelper.isEmpty(str)){
-            if(str.startsWith(prefix) || force){
-                str =  str.replaceFirst("e_n_c_o_d_e","");
-                try{
+    public static String getBase64Decode(String str, String prefix, boolean force) {
+        if (isEmpty(prefix)) prefix = "e_n_c_o_d_e";
+        if (!StringHelper.isEmpty(str)) {
+            if (str.startsWith(prefix) || force) {
+                str = str.replaceFirst("e_n_c_o_d_e", "");
+                try {
                     str = new String(EncryptHelper.decryptBASE64(str));
-                }catch(Exception e){
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
@@ -764,13 +766,12 @@ public class StringHelper {
         return str;
     }
 
-    public static String getEncodeStr(String strIn)
-    {
-        if(strIn == null)
+    public static String getEncodeStr(String strIn) {
+        if (strIn == null)
             return "";
         try {
-            strIn= URLEncoder.encode(strIn.toString(), "utf-8");
-            System.out.println("msg="+strIn);
+            strIn = URLEncoder.encode(strIn.toString(), "utf-8");
+            System.out.println("msg=" + strIn);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -812,10 +813,9 @@ public class StringHelper {
     }*/
 
 
-    public static String getMoneyStr(String src){
+    public static String getMoneyStr(String src) {
         return Money.getChnmoney(getfloatToString2(src));
     }
-
 
 
     public static String getfloatToString(String value) {
@@ -840,26 +840,30 @@ public class StringHelper {
         }
         return number;
     }
-    public static String getfloatToString2(String value) {	//保留两位小数
-        value=getfloatToString(value);
+
+    public static String getfloatToString2(String value) {    //保留两位小数
+        value = getfloatToString(value);
         int index = value.indexOf(".");
         if (index == -1) return value;
         String value1 = value.substring(0, index);
-        String value2 = value.substring(index + 1, value.length())+"00";
-        if(Integer.parseInt(value2.substring(0, 2))==0) return value1;
-        else return value1+"."+value2.substring(0, 2);
+        String value2 = value.substring(index + 1, value.length()) + "00";
+        if (Integer.parseInt(value2.substring(0, 2)) == 0) return value1;
+        else return value1 + "." + value2.substring(0, 2);
     }
-    public static String numberFormat2(String value) {	//保留两位小数
-        double num = NumberHelper.string2Double(StringHelper.null2String(value),0.0) ;
+
+    public static String numberFormat2(String value) {    //保留两位小数
+        double num = NumberHelper.string2Double(StringHelper.null2String(value), 0.0);
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(num);
     }
-    public static String numberFormat2(Double value) {	//保留两位小数
-        double num = NumberHelper.string2Double(StringHelper.null2String(value),0.0) ;
+
+    public static String numberFormat2(Double value) {    //保留两位小数
+        double num = NumberHelper.string2Double(StringHelper.null2String(value), 0.0);
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(num);
     }
-    public static String numberFormat2(double value) {	//保留两位小数
+
+    public static String numberFormat2(double value) {    //保留两位小数
         DecimalFormat df = new DecimalFormat("0.00");
         return df.format(value);
     }
@@ -871,43 +875,45 @@ public class StringHelper {
             return (null2String(request.getHeader("Host"))).trim();
         }
     }
+
     // 以 java 实现 escape  unescape
     private final static String[] hex = {
-            "00","01","02","03","04","05","06","07","08","09","0A","0B","0C","0D","0E","0F",
-            "10","11","12","13","14","15","16","17","18","19","1A","1B","1C","1D","1E","1F",
-            "20","21","22","23","24","25","26","27","28","29","2A","2B","2C","2D","2E","2F",
-            "30","31","32","33","34","35","36","37","38","39","3A","3B","3C","3D","3E","3F",
-            "40","41","42","43","44","45","46","47","48","49","4A","4B","4C","4D","4E","4F",
-            "50","51","52","53","54","55","56","57","58","59","5A","5B","5C","5D","5E","5F",
-            "60","61","62","63","64","65","66","67","68","69","6A","6B","6C","6D","6E","6F",
-            "70","71","72","73","74","75","76","77","78","79","7A","7B","7C","7D","7E","7F",
-            "80","81","82","83","84","85","86","87","88","89","8A","8B","8C","8D","8E","8F",
-            "90","91","92","93","94","95","96","97","98","99","9A","9B","9C","9D","9E","9F",
-            "A0","A1","A2","A3","A4","A5","A6","A7","A8","A9","AA","AB","AC","AD","AE","AF",
-            "B0","B1","B2","B3","B4","B5","B6","B7","B8","B9","BA","BB","BC","BD","BE","BF",
-            "C0","C1","C2","C3","C4","C5","C6","C7","C8","C9","CA","CB","CC","CD","CE","CF",
-            "D0","D1","D2","D3","D4","D5","D6","D7","D8","D9","DA","DB","DC","DD","DE","DF",
-            "E0","E1","E2","E3","E4","E5","E6","E7","E8","E9","EA","EB","EC","ED","EE","EF",
-            "F0","F1","F2","F3","F4","F5","F6","F7","F8","F9","FA","FB","FC","FD","FE","FF"
+            "00", "01", "02", "03", "04", "05", "06", "07", "08", "09", "0A", "0B", "0C", "0D", "0E", "0F",
+            "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "1A", "1B", "1C", "1D", "1E", "1F",
+            "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "2A", "2B", "2C", "2D", "2E", "2F",
+            "30", "31", "32", "33", "34", "35", "36", "37", "38", "39", "3A", "3B", "3C", "3D", "3E", "3F",
+            "40", "41", "42", "43", "44", "45", "46", "47", "48", "49", "4A", "4B", "4C", "4D", "4E", "4F",
+            "50", "51", "52", "53", "54", "55", "56", "57", "58", "59", "5A", "5B", "5C", "5D", "5E", "5F",
+            "60", "61", "62", "63", "64", "65", "66", "67", "68", "69", "6A", "6B", "6C", "6D", "6E", "6F",
+            "70", "71", "72", "73", "74", "75", "76", "77", "78", "79", "7A", "7B", "7C", "7D", "7E", "7F",
+            "80", "81", "82", "83", "84", "85", "86", "87", "88", "89", "8A", "8B", "8C", "8D", "8E", "8F",
+            "90", "91", "92", "93", "94", "95", "96", "97", "98", "99", "9A", "9B", "9C", "9D", "9E", "9F",
+            "A0", "A1", "A2", "A3", "A4", "A5", "A6", "A7", "A8", "A9", "AA", "AB", "AC", "AD", "AE", "AF",
+            "B0", "B1", "B2", "B3", "B4", "B5", "B6", "B7", "B8", "B9", "BA", "BB", "BC", "BD", "BE", "BF",
+            "C0", "C1", "C2", "C3", "C4", "C5", "C6", "C7", "C8", "C9", "CA", "CB", "CC", "CD", "CE", "CF",
+            "D0", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "DA", "DB", "DC", "DD", "DE", "DF",
+            "E0", "E1", "E2", "E3", "E4", "E5", "E6", "E7", "E8", "E9", "EA", "EB", "EC", "ED", "EE", "EF",
+            "F0", "F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "FA", "FB", "FC", "FD", "FE", "FF"
     };
     private final static byte[] val = {
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x00,0x01,0x02,0x03,0x04,0x05,0x06,0x07,0x08,0x09,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x0A,0x0B,0x0C,0x0D,0x0E,0x0F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,
-            0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F,0x3F
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x00, 0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08, 0x09, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x0A, 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F,
+            0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F, 0x3F
     };
+
     public static String escape(String s) {
         if (isEmpty(s)) return "";
         StringBuffer sbuf = new StringBuffer();
@@ -917,17 +923,17 @@ public class StringHelper {
             if (ch == ' ') {                        // space : map to '+'
                 sbuf.append('+');
             } else if ('A' <= ch && ch <= 'Z') {    // 'A'..'Z' : as it was
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if ('a' <= ch && ch <= 'z') {    // 'a'..'z' : as it was
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if ('0' <= ch && ch <= '9') {    // '0'..'9' : as it was
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if (ch == '-' || ch == '_'       // unreserved : as it was
                     || ch == '.' || ch == '!'
                     || ch == '~' || ch == '*'
                     || ch == '\'' || ch == '('
                     || ch == ')') {
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if (ch <= 0x007F) {              // other ASCII : map to %XX
                 sbuf.append('%');
                 sbuf.append(hex[ch]);
@@ -940,6 +946,7 @@ public class StringHelper {
         }
         return sbuf.toString();
     }
+
     public static String unescape(String s) {
         if (isEmpty(s)) return "";
         StringBuffer sbuf = new StringBuffer();
@@ -950,31 +957,31 @@ public class StringHelper {
             if (ch == '+') {                        // + : map to ' '
                 sbuf.append(' ');
             } else if ('A' <= ch && ch <= 'Z') {    // 'A'..'Z' : as it was
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if ('a' <= ch && ch <= 'z') {    // 'a'..'z' : as it was
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if ('0' <= ch && ch <= '9') {    // '0'..'9' : as it was
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if (ch == '-' || ch == '_'       // unreserved : as it was
                     || ch == '.' || ch == '!'
                     || ch == '~' || ch == '*'
                     || ch == '\'' || ch == '('
                     || ch == ')') {
-                sbuf.append((char)ch);
+                sbuf.append((char) ch);
             } else if (ch == '%') {
                 int cint = 0;
-                if ('u' != s.charAt(i+1)) {         // %XX : map to ascii(XX)
-                    cint = (cint << 4) | val[s.charAt(i+1)];
-                    cint = (cint << 4) | val[s.charAt(i+2)];
-                    i+=2;
+                if ('u' != s.charAt(i + 1)) {         // %XX : map to ascii(XX)
+                    cint = (cint << 4) | val[s.charAt(i + 1)];
+                    cint = (cint << 4) | val[s.charAt(i + 2)];
+                    i += 2;
                 } else {                            // %uXXXX : map to unicode(XXXX)
-                    cint = (cint << 4) | val[s.charAt(i+2)];
-                    cint = (cint << 4) | val[s.charAt(i+3)];
-                    cint = (cint << 4) | val[s.charAt(i+4)];
-                    cint = (cint << 4) | val[s.charAt(i+5)];
-                    i+=5;
+                    cint = (cint << 4) | val[s.charAt(i + 2)];
+                    cint = (cint << 4) | val[s.charAt(i + 3)];
+                    cint = (cint << 4) | val[s.charAt(i + 4)];
+                    cint = (cint << 4) | val[s.charAt(i + 5)];
+                    i += 5;
                 }
-                sbuf.append((char)cint);
+                sbuf.append((char) cint);
             }
             i++;
         }
@@ -984,18 +991,19 @@ public class StringHelper {
 
     /**
      * 转换第一个字母为大写
-     * */
-    public static String changeFirstLetter(String string){
-        if(string==null){
+     */
+    public static String changeFirstLetter(String string) {
+        if (string == null) {
             return null;
-        }else{
-            String c=string.substring(0,1);
-            String d=c.toUpperCase();
-            String returnString=string.replaceFirst(c,d);
+        } else {
+            String c = string.substring(0, 1);
+            String d = c.toUpperCase();
+            String returnString = string.replaceFirst(c, d);
             return returnString;
         }
 
     }
+
     /**
      * Converts some important chars (int) to the corresponding html string
      */
@@ -1025,18 +1033,19 @@ public class StringHelper {
 
     /**
      * 移除开头，结尾，或中间的逗号
+     *
      * @param oldstationids
      * @return
      */
     public static String removeComma(String oldstationids) {
-        if(!isEmpty(oldstationids)){
-            if(oldstationids.indexOf(",,")!=-1){
+        if (!isEmpty(oldstationids)) {
+            if (oldstationids.indexOf(",,") != -1) {
                 return oldstationids.replace(",,", ",");
             }
-            if(oldstationids.lastIndexOf(",")==oldstationids.length()){
-                oldstationids= oldstationids.substring(0,oldstationids.lastIndexOf(","));
+            if (oldstationids.lastIndexOf(",") == oldstationids.length()) {
+                oldstationids = oldstationids.substring(0, oldstationids.lastIndexOf(","));
             }
-            if(oldstationids.indexOf(",")==1){
+            if (oldstationids.indexOf(",") == 1) {
                 return oldstationids.substring(1);
             }
         }
@@ -1045,6 +1054,7 @@ public class StringHelper {
 
     /**
      * 生成令牌
+     *
      * @param request
      * @return
      */
@@ -1066,6 +1076,7 @@ public class StringHelper {
 
     /**
      * 将string中的回车、换行、空格转化为html代码
+     *
      * @param sStr
      * @return
      */
@@ -1078,7 +1089,7 @@ public class StringHelper {
         int i = 0;
         while (i <= sStr.length() - 1) {
 //			if (sStr.charAt(i) == '\n' || sStr.charAt(i) == '\r') {
-            if (sStr.charAt(i) == '\n' ) {
+            if (sStr.charAt(i) == '\n') {
                 sTmp = sTmp.append("<br>");
             } else if (sStr.charAt(i) == ' ') {
                 sTmp = sTmp.append("&nbsp;");
@@ -1092,56 +1103,65 @@ public class StringHelper {
 
     /**
      * jstr中的JS关键字符转义，以便直接输出为js脚本内容。
+     *
      * @param jstr as String
      * @return String //a="a\\bc";转换后 a=\"a\\\\bc\"
      */
-    public static String filterJString(String jstr){
-        jstr=jstr.replaceAll("\\\\","\\\\");
-        jstr=jstr.replaceAll("\"","\\\\\"");
+    public static String filterJString(String jstr) {
+        jstr = jstr.replaceAll("\\\\", "\\\\");
+        jstr = jstr.replaceAll("\"", "\\\\\"");
         return jstr;
     }
 
-    public static String filterJString2(String jstr){
-        if(jstr==null)
+    public static String filterJString2(String jstr) {
+        if (jstr == null)
             return "";
-        jstr=jstr.replaceAll("\\\\","/");
-        jstr=jstr.replaceAll("'", "");
-        jstr=jstr.replaceAll("\"", "");
+        jstr = jstr.replaceAll("\\\\", "/");
+        jstr = jstr.replaceAll("'", "");
+        jstr = jstr.replaceAll("\"", "");
         return jstr;
     }
 
-    /** ${var} */
-    public final static String REGEXP_VAR1="\\$\\{[\\w: \\.\\*\\(\\)]+\\}";
-    /** {var} */
-    public final static String REGEXP_VAR2="\\{[\\w: \\*\\.\\(\\)]+\\}";
-    /** Ognl express variate #var */
-    public final static String REGEXP_VAR_OGNL="#[\\w\\u2E80-\\u9FFF]+";
+    /**
+     * ${var}
+     */
+    public final static String REGEXP_VAR1 = "\\$\\{[\\w: \\.\\*\\(\\)]+\\}";
+    /**
+     * {var}
+     */
+    public final static String REGEXP_VAR2 = "\\{[\\w: \\*\\.\\(\\)]+\\}";
+    /**
+     * Ognl express variate #var
+     */
+    public final static String REGEXP_VAR_OGNL = "#[\\w\\u2E80-\\u9FFF]+";
+
     /**
      * 分析并获取strTemp=sss${var}dddd中的变量名var
-     * @param   sTemp
+     *
+     * @param sTemp
      * @param regExp as String //;regExp==null,默认将获取${var}的变量名称var
      * @return List&lt;String&gt;
      */
-    public static List<String> parseTemplateVar(String sTemp,String regExp){
-        List<String> fieldList=new ArrayList<String>();
-        if(sTemp==null)return fieldList;
-        if(regExp==null)regExp=REGEXP_VAR1;
-        int pos=0;
-        if(regExp.equalsIgnoreCase(REGEXP_VAR1))pos=2;
-        else if(regExp.equalsIgnoreCase(REGEXP_VAR2))pos=1;
+    public static List<String> parseTemplateVar(String sTemp, String regExp) {
+        List<String> fieldList = new ArrayList<String>();
+        if (sTemp == null) return fieldList;
+        if (regExp == null) regExp = REGEXP_VAR1;
+        int pos = 0;
+        if (regExp.equalsIgnoreCase(REGEXP_VAR1)) pos = 2;
+        else if (regExp.equalsIgnoreCase(REGEXP_VAR2)) pos = 1;
 
         //求模板内的字段名
-        fieldList=new ArrayList<String>();
-        Pattern p = Pattern.compile(regExp,Pattern.CASE_INSENSITIVE);
+        fieldList = new ArrayList<String>();
+        Pattern p = Pattern.compile(regExp, Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(sTemp);
-        String tmp=null;
-        if(m.find()){
-            do{
-                tmp=sTemp.substring(m.start(),m.end());
-                if(pos>0)
-                    tmp=tmp.substring(pos,tmp.length()-1);
+        String tmp = null;
+        if (m.find()) {
+            do {
+                tmp = sTemp.substring(m.start(), m.end());
+                if (pos > 0)
+                    tmp = tmp.substring(pos, tmp.length() - 1);
                 fieldList.add(tmp);
-            }while(m.find());
+            } while (m.find());
         }//else System.out.println("no found!");//end if.
         return fieldList;
     }
@@ -1149,16 +1169,17 @@ public class StringHelper {
 
     /**
      * 过滤字符串中的正则表达式关键词。
+     *
      * @param sText as String
      * @return String
      */
-    public static String filterRegexpChar(String sText){
-        int size=sText.length();
-        StringBuffer s=new StringBuffer();
-        char ch=0;
-        for(int i=0;i<size;i++){
-            ch=sText.charAt(i);
-            switch(ch){
+    public static String filterRegexpChar(String sText) {
+        int size = sText.length();
+        StringBuffer s = new StringBuffer();
+        char ch = 0;
+        for (int i = 0; i < size; i++) {
+            ch = sText.charAt(i);
+            switch (ch) {
                 case '\\':
                 case '^':
                 case '$':
@@ -1172,7 +1193,7 @@ public class StringHelper {
                 case '+':
                 case '?':
                 case '.':
-                    s.append("\\"+ch);
+                    s.append("\\" + ch);
                     break;
                 default:
                     s.append(ch);
@@ -1181,24 +1202,26 @@ public class StringHelper {
         return s.toString();
     }
 
-    public static String translateVelocity(String s){
-        s=s.replaceAll("<w:(\\w+)>([^<]*)</w:\\w+>", "#$1$2");
+    public static String translateVelocity(String s) {
+        s = s.replaceAll("<w:(\\w+)>([^<]*)</w:\\w+>", "#$1$2");
         return s;
     }
 
     /**
      * 过滤Sql中的\n,\r,'等关键字符
+     *
      * @param sql as String
      * @return String
      */
-    public static String filterSqlChar(String sql){
-        if(sql.indexOf('\'')>0) sql=sql.replaceAll("'", "''");
-        sql=sql.replaceAll("\\n", "\\\\n");
-        sql=sql.replaceAll("\\r", "\\\\r");
+    public static String filterSqlChar(String sql) {
+        if (sql.indexOf('\'') > 0) sql = sql.replaceAll("'", "''");
+        sql = sql.replaceAll("\\n", "\\\\n");
+        sql = sql.replaceAll("\\r", "\\\\r");
         return sql;
     }
+
     /**
-     *当原字符串位数不足时，用补足字符在字符串前补足指定的位数
+     * 当原字符串位数不足时，用补足字符在字符串前补足指定的位数
      */
     public static String fillString(String str, int length, char c) {
         while (str.length() < length) {
@@ -1211,22 +1234,22 @@ public class StringHelper {
     /**
      * 清除字符串中的HTML 标签
      * 从中获取正真显示的文本内容
-     *  eg!  一般是以 <a > xxxxxxx </  a>
+     * eg!  一般是以 <a > xxxxxxx </  a>
      * 只获取 中间 xxxxxx 部分
+     *
      * @param str
      * @return
      */
-    public static String clearHtmlTags(String str)
-    {
-        if(isEmpty(str)) return "";
+    public static String clearHtmlTags(String str) {
+        if (isEmpty(str)) return "";
         //清楚
         int iEnd = str.indexOf("</");
-        if(iEnd>0){
-            str = str.substring(0,iEnd);
+        if (iEnd > 0) {
+            str = str.substring(0, iEnd);
         }
         int iBegin = str.lastIndexOf(">");
-        if(iBegin>0){
-            str = str.substring(iBegin+1);
+        if (iBegin > 0) {
+            str = str.substring(iBegin + 1);
         }
 
         return str;
@@ -1235,12 +1258,13 @@ public class StringHelper {
     /**
      * 截取特定长度字符串，超过部分用省略号替代
      * 如果控制的字符长度小于3 ，直接返回 ...
-     *  Html标签部分还要保留
+     * Html标签部分还要保留
+     *
      * @param str
      * @param length
      * @return
      */
-    public static String subHtmlStringWithEllipsis(String str , Integer length){
+    public static String subHtmlStringWithEllipsis(String str, Integer length) {
 
         //清除标签后的内容
         String content = clearHtmlTags(str);
@@ -1248,11 +1272,11 @@ public class StringHelper {
         //是否有Html标签被清除
         boolean hasHtmlTags = content.length() < str.length();
 
-        String subContent = subStringAsChineseLength(content,length);
+        String subContent = subStringAsChineseLength(content, length);
 
-        if(hasHtmlTags && content.length()!=subContent.length()){//带标签替换
-            str = str.replace(">"+content+"</", ">"+subContent+"</");
-        }else{//无标签，整体替换
+        if (hasHtmlTags && content.length() != subContent.length()) {//带标签替换
+            str = str.replace(">" + content + "</", ">" + subContent + "</");
+        } else {//无标签，整体替换
             str = str.replace(content, subContent);
         }
 
@@ -1263,49 +1287,48 @@ public class StringHelper {
 
     /**
      * 以中文的标准 截取一定长度的字符串
+     *
      * @param content
      * @param length
      * @return
      */
-    public static String subStringAsChineseLength(String content,Integer length) {
+    public static String subStringAsChineseLength(String content, Integer length) {
 
-        try{
+        try {
             char[] _chars = content.toCharArray();
             byte[] _bytes = content.getBytes("GBK");
             //截取
-            if(!isEmpty(content))
-            {
+            if (!isEmpty(content)) {
                 //以字节方式截取字符串， length 控制的长度为中文长度
-                if(length>=2 )
-                {
-                    if(_bytes.length == content.length()){//全英文数字
-                        if(_bytes.length>length*2){//需要截取
-                            content = content.substring(0,length*2);
-                            content +="...";
+                if (length >= 2) {
+                    if (_bytes.length == content.length()) {//全英文数字
+                        if (_bytes.length > length * 2) {//需要截取
+                            content = content.substring(0, length * 2);
+                            content += "...";
                         }
-                    }else if(_bytes.length == 2*content.length()){//全中文
-                        if(_bytes.length > length*2){//需要截取
-                            content = content.substring(0,length);
-                            content +="...";
+                    } else if (_bytes.length == 2 * content.length()) {//全中文
+                        if (_bytes.length > length * 2) {//需要截取
+                            content = content.substring(0, length);
+                            content += "...";
                         }
-                    }else {//中、英文数字都有
-                        int c =0;
+                    } else {//中、英文数字都有
+                        int c = 0;
                         int _charsLength = 0;
-                        for(char ch : _chars){
-                            if(c>=length*2) break;
+                        for (char ch : _chars) {
+                            if (c >= length * 2) break;
                             _charsLength++;
-                            if(isChinese(ch)) c+=2;
-                            else c+=1;
+                            if (isChinese(ch)) c += 2;
+                            else c += 1;
                         }
                         content = new String(_chars, 0, _charsLength);
-                        if(_charsLength < _chars.length) content +="...";//需要添加...
+                        if (_charsLength < _chars.length) content += "...";//需要添加...
                     }
 
-                }else{
+                } else {
                     content = "...";
                 }
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             return e.getMessage();
         }
         return content;
@@ -1360,12 +1383,12 @@ public class StringHelper {
     }
 
     /**
-     *对特殊内容字符串进行处理，防止数据库查询时注入
+     * 对特殊内容字符串进行处理，防止数据库查询时注入
+     *
      * @param content
      * @return
      */
-    public static String decodeSpecialCharsWhenLikeUseBackslash(String content)
-    {
+    public static String decodeSpecialCharsWhenLikeUseBackslash(String content) {
         // 单引号是oracle字符串的边界,oralce中用2个单引号代表1个单引号
         String afterDecode = content.replaceAll("'", "''");
         // 由于使用了/作为ESCAPE的转义特殊字符,所以需要对该字符进行转义
@@ -1376,5 +1399,52 @@ public class StringHelper {
         // 使用转义字符 /,对oracle特殊字符_ 进行转义,只作为普通查询字符，不是模糊匹配
         afterDecode = afterDecode.replaceAll("_", "/_");
         return afterDecode;
+    }
+
+    /**
+     * 获取字符串的编码方式
+     *
+     * @param str
+     * @return
+     */
+    public static String getEncoding(String str) {
+        String encode = "GB2312";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) { //判断是不是GB2312
+                String s = encode;
+                return s; //是的话，返回“GB2312“，以下代码同理
+            }
+        } catch (Exception exception) {
+        }
+        encode = "ISO-8859-1";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) { //判断是不是ISO-8859-1
+                String s1 = encode;
+                return s1;
+            }
+        } catch (Exception exception1) {
+        }
+        encode = "UTF-8";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) { //判断是不是UTF-8
+                String s2 = encode;
+                return s2;
+            }
+        } catch (Exception exception2) {
+        }
+        encode = "GBK";
+        try {
+            if (str.equals(new String(str.getBytes(encode), encode))) { //判断是不是GBK
+                String s3 = encode;
+                return s3;
+            }
+        } catch (Exception exception3) {
+        }
+        return "";
+    }
+
+    public static String stringEncoding2UTF8(String str) throws UnsupportedEncodingException {
+        str = new String(str.getBytes(getEncoding(str)), "UTF-8");
+        return str;
     }
 }
